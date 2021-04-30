@@ -1,5 +1,6 @@
-
 package com.mycompany.pooheranca;
+
+import java.util.Scanner;
 
 public class Endereco {
     private String rua;
@@ -29,9 +30,22 @@ public class Endereco {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    public void imprimirEndereco(){
-        System.out.println("Endereço: Rua "+getRua()+". "+getCidade()+" - "+getEstado());
+
+    public void imprimirEndereco() {
+        System.out.println("Endereço: Rua " + getRua() + ". " + getCidade() + " - " + getEstado());
     }
-    
+
+    public void cadastrarEndereco(Scanner scan) {
+        System.out.println("---------- CADASTRO DE ENDEREÇO ----------");
+        System.out.print("Digite a rua: ");
+        this.setRua(scan.next());
+        Main.limparBuffer(scan);
+        System.out.print("Digite a cidade: ");
+        this.setCidade(scan.next());
+        Main.limparBuffer(scan);
+        System.out.print("Digite o estado: ");
+        this.setEstado(scan.next());
+        Main.limparBuffer(scan);
+        System.out.println("\n");
+    }
 }

@@ -1,5 +1,8 @@
 package com.mycompany.pooheranca;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Telefone {
     private String tipo;
     private String ddd;
@@ -28,9 +31,24 @@ public class Telefone {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
-    public void imprimirTelefone(){
-        System.out.println("Telefone: "+ getTipo()+": ("+ getDdd()+") "+getNumero());
+
+    public void imprimirTelefone() {
+        System.out.println("Telefone: " + getTipo() + ": (" + getDdd() + ") " + getNumero());
+    }
+
+    public void cadastrarTelefone(Scanner scan) {
+        System.out.println("---------- CADASTRO DE TELEFONE ----------");
+        System.out.print("Digite o tipo do telefone: ");
+        this.setTipo(scan.next());
+        Main.limparBuffer(scan);
+        System.out.print("Digite o DDD: ");
+        this.setDdd(scan.next());
+        Main.limparBuffer(scan);
+        System.out.print("Digite o telefone: ");
+        this.setNumero(scan.next());
+        Main.limparBuffer(scan);
+        System.out.println("\n");
     }
 }
+
 

@@ -3,9 +3,11 @@ package com.mycompany.pooheranca;
 
 //Subclasse
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class Professor extends Pessoa {
+public class Professor extends Pessoa implements Interface1 {
     /*
     As subclasses são vinculadas a classe genérica (superclasses)
     utilizando o comando extends
@@ -21,10 +23,10 @@ public class Professor extends Pessoa {
     /*
     No construtor da subclasse é necessário construir a superclasse utilando super();
     */
-    public Professor(){
+    public Professor() {
         super();
     }
-    
+
     /*
     Para utilizar uma variável ou invocar um método da classe mãe (superclasse) é utilizada a palavra
     reservada super (analoga ao this)
@@ -52,23 +54,41 @@ public class Professor extends Pessoa {
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
+
     //Sobre overriding, ou sobreposição de métodos, acesse: https://pt.slideshare.net/ludimila_monjardim/poo-19sobrecarga-sobreposio
     /*
     Sobreposição de métodos (override) em programação orientada a objetos, é um recurso da linguagem que permite que a subclasse, 
     rescreva uma implementação especifica de um método que já esta previsto em uma superclasse. A implementação na subclasse sobrepõe 
     a implementação na superclasse.
     */
+
     @Override
-    public void imprimir(){
-        System.out.println("---------- DADOS DO PROFESSOR ----------");
-        super.imprimir(); //o super acessa a classe mãe, nesse caso Pesssoa, e executa o método imprimir. 
+    public void imprimir() {
+        System.out.println("\n---------- DADOS DO PROFESSOR ----------");
+        super.imprimir();//o super acessa a classe mãe, nesse caso Pesssoa, e executa o método imprimir.
         System.out.println("Titulação: " + getTitulacao());
         System.out.println("Salário: " + getSalario());
-        for(int x=0; x<getCursos().size();x++){
+        for (int x = 0; x < getCursos().size(); x++) {
             getCursos().get(x).imprimirCurso();
         }
-        
     }
 
-
-   }
+    public void cadastrarProfessor(Scanner scan) {
+        System.out.println("---------- CADASTRO DO PROFESSOR ----------\n");
+        this.cadastrarPessoa(scan);//Cadastrar as caracteristicas de usuario no professor
+        System.out.print("Digite a titulação: ");
+        this.setTitulacao(scan.next());
+        Main.limparBuffer(scan);
+        System.out.print("Digite o salário: ");
+        this.setSalario(scan.nextDouble());
+        Main.limparBuffer(scan);
+        List<Curso> curs = new ArrayList<>();//instanciação do ArrayList de Cursos
+        System.out.println("Digite os cursos (máximo 2)");
+        for (int i = 0; i < 2; i++) {
+            Curso curso = new Curso();
+            curso.cadastrarCurso(scan);
+            curs.add(curso);
+        }
+        this.setCursos(curs);//colocando a lista de cursos dentro do professor
+    }
+}
