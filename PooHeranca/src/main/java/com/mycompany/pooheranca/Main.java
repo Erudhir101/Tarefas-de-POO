@@ -26,6 +26,7 @@ No entanto, o java não implementa herança múltipla.
 Fonte: http://dcm.ffclrp.usp.br/~evandro/ibm1030/constru/heranca.html
 */
 
+import java.util.Collections;
 import java.util.List;
 /*List é um dos três grandes tipos da Collection, sendo eles: List, Set e Maps.
 Neste algoritmo utilizamos a classe ArrayList, do tipo List
@@ -59,15 +60,16 @@ public class Main {
         Professor novoProf = new Professor(); //Instanciação do objeto Professor
         Endereco endereco; //Declaração do objeto Endereco, que será instanciado logo abaixo.
 
-        novoProf.cadastrarProfessor(scan);
+        //novoProf.cadastrarProfessor(scan);
         novoAluno.cadastrarAluno(scan);
 
-        novoProf.imprimir();
-        novoAluno.imprimir();
+    novoAluno.imprimir();
+//        novoProf.imprimir();
+//        novoAluno.imprimir();
     }
 
     // para limpara o buffer de teclado
-    public static void limparBuffer(Scanner scan){
+    public static void limparBuffer(Scanner scan) {
         if (scan.hasNextLine()) {
             scan.nextLine();
         }

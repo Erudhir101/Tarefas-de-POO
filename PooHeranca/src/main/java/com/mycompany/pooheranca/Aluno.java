@@ -3,9 +3,7 @@ package com.mycompany.pooheranca;
 
 //Subclasse
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Aluno extends Pessoa implements Interface1 {
 
@@ -32,17 +30,20 @@ public class Aluno extends Pessoa implements Interface1 {
         this.notas = notas;
     }
 
-
     @Override
     public void imprimir() {
         System.out.println("\n---------- DADOS DO ALUNO ----------");
         super.imprimir();
         getCurso().imprimirCurso();
-        System.out.println("Notas");
-        for (int x = 0; x < getNotas().size(); x++) {
+        System.out.println("------- Notas (nao ordenadas) ---------");
+        for (int x = 0; x < getNotas().size(); x++)
             System.out.println(getNotas().get(x).toString());
-        }
-
+        System.out.println("------- Notas (ordenadas) ---------");
+        List<Double> bl1;
+        bl1 = getNotas();
+        Collections.sort(bl1);//Ordenar a lista de notas
+        for(Double bl: bl1)
+            System.out.println(bl);
     }
 
     public void cadastrarAluno(Scanner scan) {

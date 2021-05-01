@@ -3,7 +3,7 @@ package com.mycompany.pooheranca;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Telefone {
+public class Telefone implements Interface2 {
     private String tipo;
     private String ddd;
     private String numero;
@@ -48,6 +48,15 @@ public class Telefone {
         this.setNumero(scan.next());
         Main.limparBuffer(scan);
         System.out.println("\n");
+    }
+
+    @Override
+    public void listar() {
+        System.out.println("\n----- TELEFONE ------");
+        System.out.printf("Tipo: %s", this.getTipo());
+        System.out.printf("DDD: %s", this.getDdd());
+        System.out.printf("Numero: %s", this.getNumero());
+        System.out.println("-------------------");
     }
 }
 
